@@ -8,6 +8,7 @@ const canvas = document.getElementById('screen');
 const ctx = canvas.getContext('2d');
 const W = canvas.width;
 const H = canvas.height;
+const SAFE = { top: 4, bottom: 14, left: 4, right: 4 };
 
 let state = 'menu';
 let menuIndex = 0;
@@ -30,33 +31,44 @@ function startMenu() {
 function drawMenu() {
   ctx.fillStyle = '#000';
   ctx.fillRect(0, 0, W, H);
+
+  const MX = SAFE.left;
+  const MY = SAFE.top;
+  const MW = W - SAFE.left - SAFE.right;
+  const MH = H - SAFE.top - SAFE.bottom;
+
+  // Title & hint inside safe area
   ctx.fillStyle = '#0cf';
-  ctx.font = '8px monospace';
+  ctx.font = '7px monospace';
   ctx.textAlign = 'center';
-  ctx.fillText('CloudPhone Games', W / 2, 12);
+  ctx.fillText('CloudPhone Games', MX + MW / 2, MY + 8);
   ctx.fillStyle = '#7cf';
   ctx.font = '5px monospace';
-  ctx.fillText('Arrows+Enter | 1-5', W / 2, 20);
+  ctx.fillText('Arrows+Enter | 1-5', MX + MW / 2, MY + 14);
 
+  // Items
   ctx.textAlign = 'left';
+  const startY = MY + 22;
+  const gapY = 14;
   for (let i = 0; i < games.length; i++) {
-    const y = 36 + i * 16;
+    const y = startY + i * gapY;
     const isSel = i === menuIndex;
     if (isSel) {
       ctx.fillStyle = '#112';
-      ctx.fillRect(8, y - 8, W - 16, 12);
+      ctx.fillRect(MX + 4, y - 7, MW - 8, 10);
       ctx.strokeStyle = '#39f';
-      ctx.strokeRect(8.5, y - 7.5, W - 17, 11);
+      ctx.strokeRect(MX + 4.5, y - 6.5, MW - 9, 9);
     }
     ctx.fillStyle = isSel ? '#fff' : '#bcd';
     ctx.font = '7px monospace';
-    ctx.fillText(`${i + 1}. ${games[i].name}`, 12, y);
+    ctx.fillText(`${i + 1}. ${games[i].name}`, MX + 8, y);
   }
 
+  // Footer inside safe area
   ctx.textAlign = 'center';
   ctx.fillStyle = '#89a';
   ctx.font = '5px monospace';
-  ctx.fillText('Esc/0 menu', W / 2, H - 4);
+  ctx.fillText('Esc/0 menu', MX + MW / 2, MY + MH - 2);
 }
 
 function startSelected(index) {
