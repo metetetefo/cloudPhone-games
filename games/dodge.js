@@ -1,15 +1,18 @@
-export default function createDodge(ctx, W, H, onExit) {
+export default function createDodge(ctx, W, H, onExit, offset = { x: 0, y: 0 }) {
   let timer = null;
   let playerX = W / 2 - 6;
   let hazards = [];
 
   function draw() {
+    ctx.save();
+    ctx.translate(offset.x, offset.y);
     ctx.fillStyle = '#010';
     ctx.fillRect(0, 0, W, H);
     ctx.fillStyle = '#6cf';
     ctx.fillRect(playerX, H - 10, 12, 4);
     ctx.fillStyle = '#f55';
     for (const h of hazards) ctx.fillRect(h.x, h.y, h.w, h.h);
+    ctx.restore();
   }
 
   function update() {
@@ -42,4 +45,3 @@ export default function createDodge(ctx, W, H, onExit) {
 
   return { id: 'dodge', name: 'Dodge', start, stop, handleKey };
 }
-

@@ -9,6 +9,13 @@ const ctx = canvas.getContext('2d');
 const W = canvas.width;
 const H = canvas.height;
 const SAFE = { top: 4, bottom: 14, left: 4, right: 4 };
+const VIEW = {
+  x: SAFE.left,
+  y: SAFE.top,
+  w: W - SAFE.left - SAFE.right,
+  h: H - SAFE.top - SAFE.bottom,
+};
+const SAFE = { top: 4, bottom: 14, left: 4, right: 4 };
 
 let state = 'menu';
 let menuIndex = 0;
@@ -32,10 +39,10 @@ function drawMenu() {
   ctx.fillStyle = '#000';
   ctx.fillRect(0, 0, W, H);
 
-  const MX = SAFE.left;
-  const MY = SAFE.top;
-  const MW = W - SAFE.left - SAFE.right;
-  const MH = H - SAFE.top - SAFE.bottom;
+  const MX = VIEW.x;
+  const MY = VIEW.y;
+  const MW = VIEW.w;
+  const MH = VIEW.h;
 
   // Title & hint inside safe area
   ctx.fillStyle = '#0cf';
@@ -114,13 +121,13 @@ document.addEventListener('keydown', e => {
   }
 });
 
-// Build game list
+// Build game list using viewport and offset
 games = [
-  createSnake(ctx, W, H, returnToMenu),
-  createPong(ctx, W, H, returnToMenu),
-  createBreakout(ctx, W, H, returnToMenu),
-  createFlappy(ctx, W, H, returnToMenu),
-  createDodge(ctx, W, H, returnToMenu),
+  createSnake(ctx, VIEW.w, VIEW.h, returnToMenu, VIEW),
+  createPong(ctx, VIEW.w, VIEW.h, returnToMenu, VIEW),
+  createBreakout(ctx, VIEW.w, VIEW.h, returnToMenu, VIEW),
+  createFlappy(ctx, VIEW.w, VIEW.h, returnToMenu, VIEW),
+  createDodge(ctx, VIEW.w, VIEW.h, returnToMenu, VIEW),
 ];
 
 startMenu();

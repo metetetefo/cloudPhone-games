@@ -1,4 +1,4 @@
-export default function createFlappy(ctx, W, H, onExit) {
+export default function createFlappy(ctx, W, H, onExit, offset = { x: 0, y: 0 }) {
   let timer = null;
   let birdY = H / 2;
   let birdV = 0;
@@ -7,6 +7,8 @@ export default function createFlappy(ctx, W, H, onExit) {
   const GAP = 42;
 
   function draw() {
+    ctx.save();
+    ctx.translate(offset.x, offset.y);
     ctx.fillStyle = '#013';
     ctx.fillRect(0, 0, W, H);
     ctx.fillStyle = '#0c4';
@@ -16,6 +18,7 @@ export default function createFlappy(ctx, W, H, onExit) {
     }
     ctx.fillStyle = '#ff0';
     ctx.fillRect(30 - 3, birdY - 3, 6, 6);
+    ctx.restore();
   }
 
   function update() {
@@ -64,4 +67,3 @@ export default function createFlappy(ctx, W, H, onExit) {
 
   return { id: 'flappy', name: 'Flappy', start, stop, handleKey };
 }
-

@@ -1,4 +1,4 @@
-export default function createBreakout(ctx, W, H, onExit) {
+export default function createBreakout(ctx, W, H, onExit, offset = { x: 0, y: 0 }) {
   let timer = null;
   let paddleX = 40;
   let ballX = W / 2;
@@ -22,6 +22,8 @@ export default function createBreakout(ctx, W, H, onExit) {
   }
 
   function draw() {
+    ctx.save();
+    ctx.translate(offset.x, offset.y);
     ctx.fillStyle = '#000';
     ctx.fillRect(0, 0, W, H);
     for (const b of bricks) {
@@ -32,6 +34,7 @@ export default function createBreakout(ctx, W, H, onExit) {
     ctx.fillStyle = '#fff';
     ctx.fillRect(paddleX, H - 8, 40, 5);
     ctx.fillRect(ballX - 2, ballY - 2, 4, 4);
+    ctx.restore();
   }
 
   function update() {
@@ -82,4 +85,3 @@ export default function createBreakout(ctx, W, H, onExit) {
 
   return { id: 'breakout', name: 'Breakout', start, stop, handleKey };
 }
-
