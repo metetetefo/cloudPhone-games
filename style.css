@@ -25,3 +25,8 @@ h1 {
 #menu p {
   margin: 4px 0;
 }
+
+#help {
+  opacity: 0.8;
+  font-size: 12px;
+}
