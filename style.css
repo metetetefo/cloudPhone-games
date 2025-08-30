@@ -22,17 +22,7 @@ h1 {
   height: calc(240px * (160/120));
 }
 
-#menu button,
-#controls button {
-  margin: 4px;
-  padding: 6px 10px;
-  font-size: 14px;
-  cursor: pointer;
+#menu p {
+  margin: 4px 0;
 }
 
-#controls {
-  display: flex;
-  flex-wrap: wrap;
-  width: 240px;
-  justify-content: center;
-}
