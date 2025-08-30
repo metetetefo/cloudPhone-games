@@ -30,3 +30,21 @@ h1 {
   opacity: 0.8;
   font-size: 12px;
 }
+
+/* Fit for Nokia 120x160 screens */
+@media (max-width: 240px) {
+  body {
+    padding-top: 0;
+    gap: 4px;
+  }
+  h1 {
+    display: none;
+  }
+  #help {
+    display: none;
+  }
+  #screen {
+    width: 100vw;
+    height: calc(100vw * (160/120));
+  }
+}

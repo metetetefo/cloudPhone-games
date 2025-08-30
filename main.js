@@ -31,32 +31,32 @@ function drawMenu() {
   ctx.fillStyle = '#000';
   ctx.fillRect(0, 0, W, H);
   ctx.fillStyle = '#0cf';
-  ctx.font = '10px monospace';
+  ctx.font = '8px monospace';
   ctx.textAlign = 'center';
-  ctx.fillText('CloudPhone Games', W / 2, 18);
+  ctx.fillText('CloudPhone Games', W / 2, 12);
   ctx.fillStyle = '#7cf';
-  ctx.font = '6px monospace';
-  ctx.fillText('Use arrows + Enter  |  1-5', W / 2, 28);
+  ctx.font = '5px monospace';
+  ctx.fillText('Arrows+Enter | 1-5', W / 2, 20);
 
   ctx.textAlign = 'left';
   for (let i = 0; i < games.length; i++) {
-    const y = 48 + i * 20;
+    const y = 36 + i * 16;
     const isSel = i === menuIndex;
     if (isSel) {
       ctx.fillStyle = '#112';
-      ctx.fillRect(10, y - 10, W - 20, 16);
+      ctx.fillRect(8, y - 8, W - 16, 12);
       ctx.strokeStyle = '#39f';
-      ctx.strokeRect(10.5, y - 9.5, W - 21, 15);
+      ctx.strokeRect(8.5, y - 7.5, W - 17, 11);
     }
     ctx.fillStyle = isSel ? '#fff' : '#bcd';
-    ctx.font = '8px monospace';
-    ctx.fillText(`${i + 1}. ${games[i].name}`, 16, y);
+    ctx.font = '7px monospace';
+    ctx.fillText(`${i + 1}. ${games[i].name}`, 12, y);
   }
 
   ctx.textAlign = 'center';
   ctx.fillStyle = '#89a';
-  ctx.font = '6px monospace';
-  ctx.fillText('Esc/0 to return here', W / 2, H - 8);
+  ctx.font = '5px monospace';
+  ctx.fillText('Esc/0 menu', W / 2, H - 4);
 }
 
 function startSelected(index) {
