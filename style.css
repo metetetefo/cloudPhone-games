@@ -1,81 +1,38 @@
-:root {
-  --bg: #0c0f12;
-  --bezel: #1a2026;
-  --accent: #2ad;
-  --key: #202830;
-  --key-text: #e8f0f8;
-}
-
-* { box-sizing: border-box; }
-html, body { height: 100%; }
 body {
   margin: 0;
-  background: radial-gradient(1000px 600px at 50% 20%, #111822, #070a0d 60%);
-  color: #dfe7ef;
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Noto Sans", Arial, "Apple Color Emoji", "Segoe UI Emoji";
-  display: grid;
-  place-items: center;
+  background: #000;
+  color: #fff;
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding-top: 20px;
 }
 
-.phone {
-  display: grid;
-  gap: 14px;
-  background: var(--bezel);
-  padding: 16px 16px 18px 16px;
-  border-radius: 22px;
-  box-shadow: 0 8px 40px rgba(0,0,0,0.45), inset 0 2px 0 rgba(255,255,255,0.04);
-}
-
-.screen-wrap {
-  background: #0a0d10;
-  padding: 10px;
-  border-radius: 12px;
-  box-shadow: inset 0 0 0 2px rgba(255,255,255,0.03), inset 0 0 40px rgba(0,0,0,0.6);
+h1 {
+  font-size: 20px;
+  margin: 0;
 }
 
 #screen {
-  display: block;
-  width: calc(min(90vw, 380px) * 0.4);
-  height: calc(min(90vw, 380px) * 0.4 * (160/120));
-  image-rendering: optimizeSpeed;
   image-rendering: pixelated;
   background: #001018;
-  border-radius: 4px;
-  box-shadow: 0 0 0 2px rgba(0,0,0,0.6), inset 0 0 0 1px rgba(255,255,255,0.06);
+  width: 240px;
+  height: calc(240px * (160/120));
 }
 
-.keys {
-  display: grid;
-  gap: 8px;
-}
-.keys button {
-  background: var(--key);
-  color: var(--key-text);
-  border: 1px solid rgba(0,0,0,0.4);
-  border-radius: 8px;
-  padding: 8px 12px;
+#menu button,
+#controls button {
+  margin: 4px;
+  padding: 6px 10px;
+  font-size: 14px;
   cursor: pointer;
-  font-weight: 600;
-}
-.keys button:active { transform: translateY(1px); }
-
-.softrow { display: flex; gap: 10px; justify-content: space-between; }
-.backrow { display: flex; justify-content: center; }
-
-.dpad {
-  display: grid;
-  gap: 8px;
-  grid-template-rows: auto auto auto;
-  align-items: center;
-  justify-items: center;
-}
-.dpad .middle { display: grid; grid-template-columns: auto auto auto; gap: 8px; align-items: center; }
-.dpad button[data-key="select"] { background: #244; border-color: #0af; }
-
-@media (min-width: 900px) {
-  #screen {
-    width: 240px; /* 2x scale */
-    height: calc(240px * (160/120));
-  }
 }
 
+#controls {
+  display: flex;
+  flex-wrap: wrap;
+  width: 240px;
+  justify-content: center;
+}
