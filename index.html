@@ -3,37 +3,17 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <title>CloudPhone Mini Games (120×160)</title>
+    <title>CloudPhone Mini Games</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div id="app">
-      <div class="phone">
-        <div class="screen-wrap">
-          <canvas id="screen" width="120" height="160"></canvas>
-        </div>
-        <div class="keys">
-          <div class="softrow">
-            <button data-key="soft1">Menu</button>
-            <button data-key="soft2">Exit</button>
-          </div>
-          <div class="dpad">
-            <button data-key="up">▲</button>
-            <div class="middle">
-              <button data-key="left">◀</button>
-              <button data-key="select">OK</button>
-              <button data-key="right">▶</button>
-            </div>
-            <button data-key="down">▼</button>
-          </div>
-          <div class="backrow">
-            <button data-key="back">Back</button>
-          </div>
-        </div>
-      </div>
+    <h1>CloudPhone Mini Games</h1>
+    <canvas id="screen" width="120" height="160"></canvas>
+    <div id="menu">
+      <p>1 - Snake</p>
+      <p>2 - Pong</p>
+      <p>0 - Return here</p>
     </div>
-
     <script type="module" src="main.js"></script>
   </body>
-  </html>
-
+</html>
